@@ -1,0 +1,112 @@
+==bitsyCODE==
+[bitsyCODE]+b,http://bitsycode.org/ allows you to add text formatting and extra stuff to your messages.
+===Text styling===
+Text styling uses square brackets. These can be escaped with a backslash to exclude them from being interpreted as styling. You may see backslashed brackets if you are reading this as a plain [.bc]+b(bitsyCODE) file, so keep this in mind.
+Tabs will be removed and are only used to enhance plain-text readability.
+Surround your text in [\\[ \\]]+b&#39;s and add a [+]+b followed by [flags]+b at the end.
+
+For example, this:
+
+Make \\[this text Bold and Italic\\]+bi, please
+
+Would yield this:
+
+Make [this text Bold and Italic]+bi, please
+
+You may [nest]+i Markup up to 5 levels deep.
+
+For example, this:
+
+Demonstrating \\[Bold Markup, \\[Italic Markup Nested 1 level, \\[Underlined Markup Nested 2 Levels\\]+u, back to level 1 \\]+i, back to ground level\\]+b
+
+Would yield this:
+
+Demonstrating [Bold Markup, [Italic Markup Nested 1 level, [Underlined Markup Nested 2 Levels]+u, back to level 1 ]+i, back to ground level]+b
+
+[Flags]+b are characters you put after the [+]+b to style your text. Flags may be combined in any combination. To simply make something italic you would put [\\[Some Text\\]+i]+q, to make something bold, italic and Striked Out, you may put [\\[Some Text\\]+ibk]+q.
+
+You [may optionally]+i put a [)]+b after your [flags]+b as a [flag terminator]+b to prevent parts of following text from being interpreted as [flags]+b.
+For example, type [\\[Rep\\]+bi)utation]+q instead of [\\[Rep\\]+biutation]+q, when trying to achieve [[Rep]+bi)utation]+q to prevent the [u]+u from being absorbed as an [underline flag]+u.
+Flags can optionally be separted by commas. These may be needed if the Sysop has defined multi-character flags. Commas may also be needed if adding special styling such as links.
+====Styling flags====
+---Flag---Style---
+--b--[Bold]+b--
+--i--[Italic]+i--
+--u--[Underlined]+u--
+--k--[Struck Out]+k--
+--s--[Subscript]+s--
+--p--[Superscript]+p--
+--l--[Spoiler]+l ---- Mouse over to read. Touch/click to read on mobile.--
+--m--[Marked/Hilighted]+m--
+--g--[Ghosted]+g--
+--f--[Flashing]+f--
+--o--[Overline]+o--
+=====Semantic flags=====
+These flags add styling as well, but do it with semantically meaningfull HTML tags. These are useful for the Sysop when writing custom pages. Using these tags can help with search optimization and alternative viewers(like readers for the blind) because the tags have a meaning, rather than just a styling effect.
+---Flag---Tag---About---
+--S--[&lt;strong&gt;]+S--Strongly emphasizes text. May strongly enhance keyword value.--
+--E--[&lt;em&gt;]+E--Emphasizes text. May enhance keyword value.--
+--M--[&lt;mark&gt;]+M--Marks/hilights text. Could possibly put some meaning on it.--
+--q--[&lt;q&gt;]+q--Makes it a quote.--
+
+
+====Special stuff====
+There are a few special things that can be added with the flags.
+=====protocol: ---- Link=====
+Linkifies the text. Common uses would be [http://]+q, [mailto:]+q, and [telnet:]+q. It can also support custom protocols like <q cite="http://deckromancy.com"><a href="http://deckromancy.com/">deckromancy:</a></q> and <q cite="http://purikuraapp.com"><a href="http://purikuraapp.com/">punykura:</a></q>, making it useful for apps and programs.
+
+---Input---Output---
+--\\[Spread the word about bitsyBBS!\\]+http://bitsyBBS.org/   --[Spread the word about bitsyBBS!]+http://bitsyBBS.org/) 	--
+--\\[Launch Deckromancy&reg;\\]+deckromancy: 					--[Launch Deckromancy&reg;]+deckromancy:) 					--
+
+====# ---- Custom color====
+The Sysop may disable coloring, or restrict it to only higher access members.
+\\[Stuff\\]+#0000FF will add a color with standard hex/HTML color codes.
+---+g ---
+--[\\[Oranges\\]+#FF9900]+#FF9900					--[\\[Apples\\]+#AA4444]+#AA4444					--
+--[\\[Pears\\]+#22AA22]+#22AA22						--[\\[Bananas\\]+#DDDD00]+#DDDD00					--
+\\[Stuff\\]+#0000FF,#DD4444 will style #[color]+#0000FF,#[background-color]+#,#DD4444.
+---+g ---
+--[\\[Oranges\\]+#FF9900,#995500]+#FF9900,#995500	--[\\[Apples\\]+#AA4444,#551111]+#AA4444,#551111	--
+--[\\[Pears\\]+#22AA22,#117711]+#22AA22,#117711		--[\\[Bananas\\]+#DDDD00,#999900]+#DDDD00,#999900	--
+\\[Stuff\\]+#,#DD4444 will style #,#[background-color-only]+#,#DD4444.
+---+g ---
+--[\\[Oranges\\]+#,#995500]+#,#995500				--[\\[Apples\\]+#,#551111]+#,#551111				--
+--[\\[Pears\\]+#,#117711]+#,#117711					--[\\[Bananas\\]+#,#999900]+#,#999900				--
+===Tables===
+You can add tables by specifying cells between --s. Use three-wide --- seperators for headings. These dashed markings must be at the very start of the line.
+This code:
+ ---Animal	---Sound	---Eats	---
+ --duck 		--quack		--bugs	--
+ --cat		  --meow		--mice	--
+ --horse  	--neigh		--grass	--
+Displays:
+---Animal	---Sound	---Eats	---
+--duck		--quack		--bugs	--
+--cat	  	--meow		--mice	--
+--horse		--neigh		--grass	--
+===Bulletin Lists===
+You can add bullet lists by placing [*]+b at the start of your lines.
+This:
+
+ *Point one
+ *Secondly
+ *Thirdly
+
+Displays:
+*Point one
+*Secondly
+*Thirdly
+The same can be done with ordered lists using [#]+b.
+This:
+
+ #Point one
+ #Secondly
+ #Thirdly
+
+Displays:
+#Point one
+#Secondly
+#Thirdly
+
+You can make a BBS-style [long dash]+q by putting four consecutive -s( ---- ).
